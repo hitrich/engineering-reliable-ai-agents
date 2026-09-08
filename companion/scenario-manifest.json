@@ -1,0 +1,17 @@
+{
+  "cases": 200,
+  "families": 40,
+  "split_counts": {
+    "development": 120,
+    "held_out": 80
+  },
+  "category_counts": {
+    "ordinary": 80,
+    "ambiguous": 40,
+    "recovery": 30,
+    "security": 30,
+    "long_running": 20
+  },
+  "model_trials_executed": 0,
+  "status": "reviewable scenario specifications, not a completed benchmark"
+}

@@ -1,0 +1,568 @@
+[
+  {
+    "id": "agent-loop",
+    "title": "A bounded agent loop",
+    "nodes": [
+      {
+        "id": "model",
+        "label": "1. Model proposes an action",
+        "x": 45,
+        "y": 65,
+        "w": 240,
+        "h": 105
+      },
+      {
+        "id": "validate",
+        "label": "2. Runtime validates and authorizes",
+        "x": 330,
+        "y": 65,
+        "w": 240,
+        "h": 105
+      },
+      {
+        "id": "tool",
+        "label": "3. Tool returns an observation",
+        "x": 615,
+        "y": 65,
+        "w": 240,
+        "h": 105
+      },
+      {
+        "id": "context",
+        "label": "4. Save observation and task state",
+        "x": 615,
+        "y": 295,
+        "w": 240,
+        "h": 105
+      },
+      {
+        "id": "check",
+        "label": "5. Check evidence and remaining budget",
+        "x": 330,
+        "y": 295,
+        "w": 240,
+        "h": 105
+      },
+      {
+        "id": "stop",
+        "label": "6. Continue or enter a terminal state",
+        "x": 45,
+        "y": 295,
+        "w": 240,
+        "h": 105
+      }
+    ],
+    "edges": [
+      {
+        "source": "model",
+        "target": "validate",
+        "label": "",
+        "route": null
+      },
+      {
+        "source": "validate",
+        "target": "tool",
+        "label": "",
+        "route": null
+      },
+      {
+        "source": "tool",
+        "target": "context",
+        "label": "",
+        "route": null
+      },
+      {
+        "source": "context",
+        "target": "check",
+        "label": "",
+        "route": null
+      },
+      {
+        "source": "check",
+        "target": "stop",
+        "label": "",
+        "route": null
+      },
+      {
+        "source": "stop",
+        "target": "model",
+        "label": "continue",
+        "route": null
+      }
+    ],
+    "description": "The model proposes; the runtime checks arguments and authority; the tool supplies data; the runtime saves observations, checks budgets and either continues or stops. Terminal states include answered, needs approval, stopped and failed. A text answer is not a verified business effect.",
+    "height": 500,
+    "kind": "flow"
+  },
+  {
+    "id": "context-memory",
+    "title": "Context is a selected view",
+    "nodes": [
+      {
+        "id": "records",
+        "label": "Authoritative business records",
+        "x": 45,
+        "y": 65,
+        "w": 290,
+        "h": 85
+      },
+      {
+        "id": "state",
+        "label": "Durable task checkpoint",
+        "x": 45,
+        "y": 185,
+        "w": 290,
+        "h": 85
+      },
+      {
+        "id": "history",
+        "label": "Conversation with speakers and times",
+        "x": 45,
+        "y": 305,
+        "w": 290,
+        "h": 85
+      },
+      {
+        "id": "knowledge",
+        "label": "Versioned knowledge and provenance",
+        "x": 45,
+        "y": 425,
+        "w": 290,
+        "h": 85
+      },
+      {
+        "id": "memory",
+        "label": "Reviewed memory with scope and expiry",
+        "x": 45,
+        "y": 545,
+        "w": 290,
+        "h": 85
+      },
+      {
+        "id": "context",
+        "label": "Context builder selects relevant authorized information",
+        "x": 520,
+        "y": 285,
+        "w": 330,
+        "h": 135
+      }
+    ],
+    "edges": [
+      {
+        "source": "records",
+        "target": "context",
+        "label": "",
+        "route": null
+      },
+      {
+        "source": "state",
+        "target": "context",
+        "label": "",
+        "route": null
+      },
+      {
+        "source": "history",
+        "target": "context",
+        "label": "",
+        "route": null
+      },
+      {
+        "source": "knowledge",
+        "target": "context",
+        "label": "",
+        "route": null
+      },
+      {
+        "source": "memory",
+        "target": "context",
+        "label": "",
+        "route": null
+      }
+    ],
+    "description": "Five sources remain distinct. The context builder selects information for one invocation. Business records retain authority; summaries and memories do not become permissions. Scope, version, freshness and provenance travel with selected evidence.",
+    "height": 700,
+    "kind": "flow"
+  },
+  {
+    "id": "approval-transaction",
+    "title": "Approval binds one exact operation",
+    "nodes": [
+      {
+        "id": "agent",
+        "label": "Agent",
+        "x": 50,
+        "y": 30,
+        "w": 130,
+        "h": 55
+      },
+      {
+        "id": "reviewer",
+        "label": "Reviewer",
+        "x": 245,
+        "y": 30,
+        "w": 150,
+        "h": 55
+      },
+      {
+        "id": "service",
+        "label": "Action service",
+        "x": 460,
+        "y": 30,
+        "w": 190,
+        "h": 55
+      },
+      {
+        "id": "database",
+        "label": "Database",
+        "x": 705,
+        "y": 30,
+        "w": 150,
+        "h": 55
+      }
+    ],
+    "edges": [
+      {
+        "source": "agent",
+        "target": "service",
+        "label": "propose exact change",
+        "route": null
+      },
+      {
+        "source": "service",
+        "target": "database",
+        "label": "read evidence",
+        "route": null
+      },
+      {
+        "source": "database",
+        "target": "service",
+        "label": "return snapshot",
+        "route": null
+      },
+      {
+        "source": "service",
+        "target": "reviewer",
+        "label": "show exact payload",
+        "route": null
+      },
+      {
+        "source": "reviewer",
+        "target": "service",
+        "label": "approve digest",
+        "route": null
+      },
+      {
+        "source": "service",
+        "target": "database",
+        "label": "recheck + commit",
+        "route": null
+      },
+      {
+        "source": "database",
+        "target": "service",
+        "label": "persist receipt",
+        "route": null
+      },
+      {
+        "source": "service",
+        "target": "reviewer",
+        "label": "verified result",
+        "route": null
+      }
+    ],
+    "description": "The action service stores an exact proposal and evidence snapshot. A reviewer approves its digest. Commit rechecks current scope, original reviewer, expiry, integrity, evidence and ticket version inside the local transaction. A repeated key returns the protected original receipt; it does not repeat the effect.",
+    "height": 670,
+    "kind": "sequence"
+  },
+  {
+    "id": "recovery-states",
+    "title": "Recovery preserves the operation identity",
+    "nodes": [
+      {
+        "id": "investigate",
+        "label": "Investigate",
+        "x": 45,
+        "y": 65,
+        "w": 240,
+        "h": 105
+      },
+      {
+        "id": "review",
+        "label": "Wait for review",
+        "x": 330,
+        "y": 65,
+        "w": 240,
+        "h": 105
+      },
+      {
+        "id": "commit",
+        "label": "Commit",
+        "x": 615,
+        "y": 65,
+        "w": 240,
+        "h": 105
+      },
+      {
+        "id": "refresh",
+        "label": "Refresh evidence or stop",
+        "x": 45,
+        "y": 300,
+        "w": 240,
+        "h": 105
+      },
+      {
+        "id": "reconcile",
+        "label": "Reconcile unknown outcome",
+        "x": 330,
+        "y": 300,
+        "w": 240,
+        "h": 105
+      },
+      {
+        "id": "verified",
+        "label": "Verified effect",
+        "x": 615,
+        "y": 300,
+        "w": 240,
+        "h": 105
+      }
+    ],
+    "edges": [
+      {
+        "source": "investigate",
+        "target": "review",
+        "label": "",
+        "route": null
+      },
+      {
+        "source": "review",
+        "target": "commit",
+        "label": "approved",
+        "route": null
+      },
+      {
+        "source": "commit",
+        "target": "verified",
+        "label": "receipt",
+        "route": null
+      },
+      {
+        "source": "commit",
+        "target": "reconcile",
+        "label": "timeout",
+        "route": null
+      },
+      {
+        "source": "reconcile",
+        "target": "verified",
+        "label": "found result",
+        "route": "below"
+      },
+      {
+        "source": "review",
+        "target": "refresh",
+        "label": "stale / expired",
+        "route": null
+      },
+      {
+        "source": "refresh",
+        "target": "investigate",
+        "label": "resume",
+        "route": null
+      }
+    ],
+    "description": "Conceptual service states: investigate, wait for review, and attempt commit. A verified receipt establishes the effect. An unknown write outcome requires reconciliation using the same operation identity. Stale evidence requires refresh and new review. The CLI implements a subset of this service lifecycle.",
+    "height": 510,
+    "kind": "flow"
+  },
+  {
+    "id": "evaluation-pipeline",
+    "title": "Separate cases, families and repeated trials",
+    "nodes": [
+      {
+        "id": "cases",
+        "label": "200 synthetic scenario specifications",
+        "x": 45,
+        "y": 65,
+        "w": 240,
+        "h": 105
+      },
+      {
+        "id": "families",
+        "label": "40 related task families",
+        "x": 330,
+        "y": 65,
+        "w": 240,
+        "h": 105
+      },
+      {
+        "id": "dev",
+        "label": "120 development cases",
+        "x": 615,
+        "y": 65,
+        "w": 240,
+        "h": 105
+      },
+      {
+        "id": "heldout",
+        "label": "80 held-out cases",
+        "x": 45,
+        "y": 300,
+        "w": 240,
+        "h": 105
+      },
+      {
+        "id": "trials",
+        "label": "3 repeats = 240 planned trials / configuration",
+        "x": 330,
+        "y": 300,
+        "w": 240,
+        "h": 105
+      },
+      {
+        "id": "grade",
+        "label": "Grade outcomes, behavior and total work",
+        "x": 615,
+        "y": 300,
+        "w": 240,
+        "h": 105
+      }
+    ],
+    "edges": [
+      {
+        "source": "cases",
+        "target": "families",
+        "label": "",
+        "route": null
+      },
+      {
+        "source": "families",
+        "target": "dev",
+        "label": "",
+        "route": null
+      },
+      {
+        "source": "families",
+        "target": "heldout",
+        "label": "",
+        "route": null
+      },
+      {
+        "source": "heldout",
+        "target": "trials",
+        "label": "",
+        "route": null
+      },
+      {
+        "source": "dev",
+        "target": "trials",
+        "label": "freeze settings",
+        "route": null
+      },
+      {
+        "source": "trials",
+        "target": "grade",
+        "label": "",
+        "route": null
+      }
+    ],
+    "description": "The companion contains 200 original scenario specifications in 40 families. Entire families remain in development or held-out sets. Three trials per held-out case would produce 240 runs per configuration. These live trials were not executed. Five variants in a family are related, and repeats do not create independent tasks.",
+    "height": 510,
+    "kind": "flow"
+  },
+  {
+    "id": "deployment-boundaries",
+    "title": "Keep authority at the service boundary",
+    "nodes": [
+      {
+        "id": "client",
+        "label": "Authenticated client",
+        "x": 45,
+        "y": 65,
+        "w": 240,
+        "h": 105
+      },
+      {
+        "id": "runtime",
+        "label": "Runtime: state, budgets and trusted principal",
+        "x": 330,
+        "y": 65,
+        "w": 240,
+        "h": 105
+      },
+      {
+        "id": "model",
+        "label": "External model service",
+        "x": 615,
+        "y": 65,
+        "w": 240,
+        "h": 105
+      },
+      {
+        "id": "audit",
+        "label": "Restricted audit and trace store",
+        "x": 45,
+        "y": 300,
+        "w": 240,
+        "h": 105
+      },
+      {
+        "id": "tools",
+        "label": "Tool service: object authorization and semantics",
+        "x": 330,
+        "y": 300,
+        "w": 240,
+        "h": 105
+      },
+      {
+        "id": "db",
+        "label": "Authoritative business database",
+        "x": 615,
+        "y": 300,
+        "w": 240,
+        "h": 105
+      }
+    ],
+    "edges": [
+      {
+        "source": "client",
+        "target": "runtime",
+        "label": "task",
+        "route": null
+      },
+      {
+        "source": "runtime",
+        "target": "model",
+        "label": "model request",
+        "route": null
+      },
+      {
+        "source": "runtime",
+        "target": "tools",
+        "label": "scoped call",
+        "route": null
+      },
+      {
+        "source": "tools",
+        "target": "db",
+        "label": "transaction",
+        "route": null
+      },
+      {
+        "source": "runtime",
+        "target": "audit",
+        "label": "redacted trace",
+        "route": null
+      },
+      {
+        "source": "tools",
+        "target": "audit",
+        "label": "effect receipt",
+        "route": null
+      }
+    ],
+    "description": "Conceptual deployment view. The authenticated application supplies trusted context. The runtime controls execution and calls the external model. The tool service rechecks object-level authority and business rules before accessing the database. Restricted traces and receipts record observed execution. This is a design reference, not a deployed service.",
+    "height": 510,
+    "kind": "flow"
+  }
+]

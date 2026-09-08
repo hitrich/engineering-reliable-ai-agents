@@ -1,0 +1,111 @@
+{
+  "title": "Engineering Reliable AI Agents",
+  "subtitle": "From First Prototype to Production Systems",
+  "author": "Murad Malachiev",
+  "edition": "First edition",
+  "language": "en",
+  "date": "2026-09-08",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "1. When Does a Problem Need an Agent?",
+      "words": 2864
+    },
+    {
+      "number": 2,
+      "title": "2. Specify the Job Before Building the Agent",
+      "words": 3820
+    },
+    {
+      "number": 3,
+      "title": "3. Build the Smallest Useful Agent",
+      "words": 3150
+    },
+    {
+      "number": 4,
+      "title": "4. Tools Are Where Decisions Become Actions",
+      "words": 3689
+    },
+    {
+      "number": 5,
+      "title": "5. Give the Agent the Right Evidence",
+      "words": 4138
+    },
+    {
+      "number": 6,
+      "title": "6. Context, Memory, and Persistent State",
+      "words": 4071
+    },
+    {
+      "number": 7,
+      "title": "7. Planning, Execution, and Recovery",
+      "words": 3582
+    },
+    {
+      "number": 8,
+      "title": "8. Evaluate the Agent, Not Just Its Answer",
+      "words": 4426
+    },
+    {
+      "number": 9,
+      "title": "9. Secure the Complete Action Path",
+      "words": 4414
+    },
+    {
+      "number": 10,
+      "title": "10. Design Human Supervision That Works",
+      "words": 3924
+    },
+    {
+      "number": 11,
+      "title": "11. When Multiple Agents Help",
+      "words": 3492
+    },
+    {
+      "number": 12,
+      "title": "12. Connect Agents to Tools and Other Agents",
+      "words": 4330
+    },
+    {
+      "number": 13,
+      "title": "13. Deploy, Observe, and Operate",
+      "words": 3962
+    },
+    {
+      "number": 14,
+      "title": "14. Control Cost and Performance",
+      "words": 4394
+    },
+    {
+      "number": 15,
+      "title": "15. Build Credible Domain Specialists",
+      "words": 3841
+    },
+    {
+      "number": 16,
+      "title": "16. Launch, Learn, and Take Responsibility",
+      "words": 3393
+    }
+  ],
+  "chapter_words": 61490,
+  "tables": 51,
+  "generated_illustrations": 3,
+  "technical_diagrams": 6,
+  "references": 41,
+  "appendices": 3,
+  "component_checks": 29,
+  "live_model_trials": 0,
+  "human_studies": 0,
+  "word_count_method": "Whitespace tokens in book text, including tables, references and captions; approximate editorial word count.",
+  "word_count_approx": 67707,
+  "pdf_pages": 216,
+  "page_size_inches": [
+    7,
+    10
+  ],
+  "pdf_page_inches": [
+    7,
+    10
+  ],
+  "visual_style": "Classical painting in cobalt, ivory and gold, with matching technical diagrams."
+}

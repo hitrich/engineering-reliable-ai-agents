@@ -1,0 +1,23 @@
+name: Companion checks
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  offline:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run offline checks
+        working-directory: companion
+        run: |
+          python test_northstar.py
+          python test_mcp.py
+          python summarize_trials.py --check
+          python make_scenarios.py
+          git diff --exit-code -- offline-check-report.json scenarios.jsonl scenario-manifest.json
