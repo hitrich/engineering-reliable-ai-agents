@@ -1,11 +1,15 @@
 # Engineering Reliable AI Agents
 
 **From First Prototype to Production Systems**  
-**Murad Malachiev · First edition, September 2026**
+**Murad Malachiev · First edition · Expanded October 2026 update**
 
-A practical book about building AI agents whose actions are bounded, verifiable, and recoverable. The 216-page edition follows a fictional support agent from a first prototype through tool design, evidence, memory, evaluation, security, human supervision, and production operation.
+A practical book about building AI agents whose actions are bounded, verifiable, and recoverable. The 447-page edition follows a fictional support agent from a first prototype through tool design, evidence, memory, evaluation, security, human supervision, and production operation.
 
 <p><img src="cover.png" alt="Engineering Reliable AI Agents by Murad Malachiev" width="350"></p>
+
+## October 2026 update
+
+This expanded update includes approximately 136,211 words, deeper coverage of evidence and context engineering, recovery, evaluation, multi-agent systems, interoperability, cost and performance, and domain specialists. The three appendices and annotated references have also been expanded.
 
 ## Read the book
 
@@ -14,7 +18,7 @@ A practical book about building AI agents whose actions are bounded, verifiable,
 - [Read the Markdown edition](engineering-reliable-ai-agents.md)
 - [Browse the companion guide](companion/README.md)
 
-The book contains 16 chapters, 51 tables, six technical diagrams, two interior paintings, three technical appendices, and references. The HTML edition includes chapter navigation and an interactive companion with diagrams, calculators, and a supervision demonstration.
+The book contains 16 chapters, 76 tables, six technical diagrams, two interior paintings, three technical appendices, and 109 annotated references. The HTML edition includes chapter navigation and an interactive companion with diagrams, calculators, and a supervision demonstration.
 
 ## Run the companion
 
